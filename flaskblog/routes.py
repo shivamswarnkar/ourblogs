@@ -18,9 +18,6 @@ posts = [
         'content': 'Yada yada hi dharmshya, glarin bhavit bharata'
     }
 ]
-# test
-dummy_email = 'shivam_swarnkar@rediffmail.com'
-dummy_password = '12345678'
 
 
 @app.route("/")
@@ -34,26 +31,11 @@ def about():
     return render_template('about.html', title='About')
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = Login()
-    if form.validate_on_submit():
-        if(form.email.data == dummy_email
-                and form.password.data == dummy_password):
-            flash('Successfully Logged In', 'success')
-            return redirect(url_for('home'))
-        else:
-            flash('Email address or password is incorrect. Please try again.', 'danger')
-            return redirect(url_for('login'))
-
-    return render_template('login.html', form=form)
-
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = Register()
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data,
                     password=hashed_password,
                     email=form.email.data)
@@ -61,5 +43,20 @@ def register():
         db.session.commit()
         flash(f'Account created for {form.username.data}', 'success')
         return redirect(url_for('home'))
-    return render_template('register.html', form=form )
+    return render_template('register.html', form=form)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = Login()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            flash('Successfully Logged In', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Email address or password is incorrect. Please try again.', 'danger')
+            return redirect(url_for('login'))
+
+    return render_template('login.html', form=form)
 

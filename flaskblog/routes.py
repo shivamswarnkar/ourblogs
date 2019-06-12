@@ -44,8 +44,8 @@ def register():
                     email=form.email.data)
         db.session.add(user)
         db.session.commit()
-        flash(f'Account created for {form.username.data}', 'success')
-        return redirect(url_for('home'))
+        flash(f'Account has been created. Please login for account access.', 'success')
+        return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
 

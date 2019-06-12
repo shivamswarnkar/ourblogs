@@ -1,3 +1,8 @@
 /venv/*
 /__pycache__/*
 /.idea/*
+/flaskblog/__pycache__/*
+*.DS_Store*
+*.pyc*
+*~*
+*.db*

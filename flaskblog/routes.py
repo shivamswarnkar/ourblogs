@@ -1,7 +1,7 @@
 from flaskblog import app, bcrypt, db
 from flask import render_template, url_for, flash, redirect, request
 from flaskblog.forms import Login, Register, AccountInfo
-from flaskblog.models import User, Post
+from flaskblog.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets
 import os

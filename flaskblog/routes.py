@@ -116,7 +116,7 @@ def new_post():
         post = Post(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Successfully added your new post.', 'success')
+        flash('Your post was created successfully.', 'success')
         return redirect(url_for('home'))
     return render_template('create_post.html', title='New Post', legend='New Post', form=form)
 
@@ -138,9 +138,21 @@ def update_post(post_id):
         post.title = form.title.data
         post.content = form.content.data
         db.session.commit()
-        flash('Successfully updated your post.', 'success')
+        flash('Your post was updated successfully.', 'success')
         return redirect(url_for('read_post', post_id=post.id))
     elif request.method == "GET":
         form.title.data = post.title
         form.content.data = post.content
     return render_template('create_post.html', title='Update Post', legend='Update Post', form=form)
+
+
+@app.route('/post/<int:post_id>/delete', methods=['POST'])
+@login_required
+def delete_post(post_id):
+    post = Post.query.filter_by(id=post_id).first()
+    if current_user != post.author:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post was deleted successfully.', 'info')
+    return redirect(url_for('home'))

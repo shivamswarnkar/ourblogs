@@ -119,3 +119,9 @@ def new_post():
         flash('Successfully added your new post.', 'success')
         return redirect(url_for('home'))
     return render_template('create_post.html', title='New Post', form=form)
+
+
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    p = Post.query.filter_by(id=post_id).first()
+    return render_template('post.html', title=p.title, post=p)

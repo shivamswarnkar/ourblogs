@@ -7,22 +7,6 @@ import secrets
 import os
 from PIL import Image
 
-# list of posts for blog
-posts = [
-    {
-        'author': 'Shivam Swarnkar',
-        'date_posted': '20/04/19',
-        'title': 'Blog 1',
-        'content': 'La ba bbab ke babba ne haa baba'
-    },
-    {
-        'author': 'Shriyan Blue',
-        'date_posted': '19/07/18',
-        'title': 'Blog 2',
-        'content': 'Yada yada hi dharmshya, glarin bhavit bharata'
-    }
-]
-
 
 @app.route("/")
 @app.route('/home')

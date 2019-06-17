@@ -8,8 +8,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #444444;
 }
 
-.bg-steel {
-  background-color: #443218;
+.bg-blue {
+  background-color: #004085;;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -77,4 +77,17 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.account-info{
+    color:white;
+}
+
+div.account-info:hover {
+  background: #dee2e6;
+  text-decoration: none;
+}
+
+a, u {
+    text-decoration: none !important;
 }

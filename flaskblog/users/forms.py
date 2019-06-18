@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from flaskblog.models import User
 from flask_wtf.file import FileField, FileAllowed
+from wtforms import (StringField, PasswordField,
+                     BooleanField, SubmitField)
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_login import current_user
+from flaskblog.models import User
 
 
 class Register(FlaskForm):
@@ -45,12 +46,6 @@ class AccountInfo(FlaskForm):
     def validate_email(self, email):
         if current_user.email != email.data and User.query.filter_by(email=email.data).first():
             raise ValidationError('Email already in use. Please use a different email address.')
-
-
-class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
-    submit = SubmitField('Post')
 
 
 class RequestResetForm(FlaskForm):

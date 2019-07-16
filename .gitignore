@@ -2,8 +2,6 @@
 /__pycache__/*
 /.idea/*
 /flaskblog/__pycache__/*
-/flaskblog/static/profile_pics/*
 *.DS_Store*
 *.pyc*
 *~*
-*.db*

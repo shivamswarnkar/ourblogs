@@ -45,37 +45,6 @@ Your local server should be running. By default server not run on debug mode and
 
 ***Note: Procfile is for Heroku deployment.***
 
-### Structure
-├── Procfile
-├── README.md
-├── flaskblog
-│   ├── __init__.py
-│   ├── config.py
-│   ├── errors
-│   │   ├── __init__.py
-│   │   └── handlers.py
-│   ├── main
-│   │   ├── __init__.py
-│   │   └── routes.py
-│   ├── models.py
-│   ├── posts
-│   │   ├── __init__.py
-│   │   ├── forms.py
-│   │   └── routes.py
-│   ├── site.db
-│   ├── static
-│   ├── templates 
-│   └── users
-│       ├── __init__.py
-│       ├── forms.py
-│       ├── routes.py
-│       └── utils.py
-├── requirements.txt
-└── run.py
-
-
-
-
 ### Dependencies
 
 - bcrypt==3.1.7

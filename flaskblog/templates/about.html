@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-        <h1>About</h1>
-        <h3>This is a flask practice Webapp.</h3>
+<div class="content-section">
+	<h1>About</h1>
+    <p>A light weight bloggin app for sharing common interests. All posts are public however you can update/delete your posts whenever you'd like. All your information is encrypted and will not be shared with anyone without your prior consent. <br>
+    For more details, read our 
+    	<a href="{{url_for('main.privacy')}}" target="_blank">Privacy Policies</a> and 
+    	<a href="{{url_for('main.terms')}}" target="_blank">Terms & Conditions.</a>
+
+	</p>
+</div>     
 {% endblock content %}
